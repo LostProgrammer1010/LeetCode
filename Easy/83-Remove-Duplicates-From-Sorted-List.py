@@ -1,19 +1,13 @@
-def deleteDuplicates(node: Optional[ListNode]) -> Optional[ListNode]:
+def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        start = head
 
-    head = node
+        while(head):
+            nxt = head.next
 
-    if node is None:
-        return None
+            while(nxt and head.val == nxt.val):
+                nxt = nxt.next
+            
+            head.next = nxt
+            head = head.next
 
-    while(node and node.next):
-        current = node
-        while(node.next and node.next.val == node.val):
-            node = node.next
-
-            if node:
-                node = node.next
-                current.next = ndoe
-            else:
-                current.next = node
-
-    return head
+        return start
