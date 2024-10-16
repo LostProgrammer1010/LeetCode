@@ -1,15 +1,9 @@
-def isSameTree(p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
-    if p is None and q is None:
-        return True
+        if p is None and q is None:
+            return True
 
-    if p is None and q is not None:
-        return False
+        if bool(q is None) ^ bool(p is None) or q.val != p.val:
+            return False
 
-    if p is not None and q is None:
-        return False
-
-    if p.val != q.val:
-        return False
-
-    return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
