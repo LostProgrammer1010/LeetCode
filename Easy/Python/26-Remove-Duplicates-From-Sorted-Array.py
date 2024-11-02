@@ -1,15 +1,14 @@
 def removeDuplicates(self, nums: List[int]) -> int:
-        length_nums = len(nums)
+  ans = head
 
-        i = 0
-        new_space = 0
+  while(head and head.next):
+    if head.val == head.next.val:
+      temp = head
+      while(temp and temp.val == head.val):
+        temp = temp.next
+      head.next = temp
+    head = head.next
 
-        while(i < length_nums):
-            cur_val = nums[i]
-            nums[new_space] = cur_val
-            new_space +=1
 
-            while(i < length_nums and nums[i] == cur_val):
-                i += 1
+  return ans
 
-        return new_space

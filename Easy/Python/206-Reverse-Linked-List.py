@@ -1,18 +1,13 @@
 def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+  prev = None
+  cur = head
 
-        array = []
+  while(cur):
+    nxt = cur.next
+    cur.next = prev
+    prev = cur
+    if nxt is None:
+      return cur
+    cur = nxt
 
-        if not head:
-            return head
-
-        while(head):
-            array.append(head.val)
-            head = head.next
-        new_head = ListNode(array[-1])
-        temp = new_head
-
-        for i in range(len(array)-2, -1, -1):
-            temp.next = ListNode(array[i])
-            temp = temp.next
-
-        return new_head
+  return cur
